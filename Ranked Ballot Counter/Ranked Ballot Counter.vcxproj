@@ -127,7 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Ranked Ballot Counter.cpp" />
+    <ClCompile Include="ballot.cpp" />
+    <ClCompile Include="candidate.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="voter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ballot.h" />
+    <ClInclude Include="candidate.h" />
+    <ClInclude Include="main.hpp" />
+    <ClInclude Include="voter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

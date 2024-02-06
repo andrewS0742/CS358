@@ -1,0 +1,33 @@
+#include "main.hpp"
+
+/*
+
+	Ranked Ballot Processing
+
+	classes
+		voter
+		-> contains list of voted for candidates as list, "blank" for blank entry
+		-> read from ballot csv
+
+		candidate
+		-> contains name of candidate, number of times voted
+
+		ballot
+		-> reads in csv
+		-> generates list of voters
+		-> generates candidates with appropriate number of times voted from voter list
+		-> goes through rounds to determine winner
+		-> displays election results
+
+	considerations
+		need to plan how to read through csv file effectively
+		need to think of getting next vote for voter with blank vote
+		eliminating candidates prior to a new round depending on conditions
+		implement testing
+*/
+
+int main()
+{
+	std::cout << "Hello World!\n";
+}
+
