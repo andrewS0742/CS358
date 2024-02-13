@@ -47,6 +47,15 @@ void UniqueCandidateList::tryAddCandidate(std::string candidateName)
 	}
 }
 
+void UniqueCandidateList::sortByVote()
+{
+	if (!isSorted)
+	{
+		isSorted = true;
+		std::sort(cList.begin(), cList.end(), [](Candidate& a, Candidate& b) {return a.getNumVotes() > b.getNumVotes(); });
+	}
+}
+
 Candidate UniqueCandidateList::get(int index)
 {
 	//exception if out of bounds
@@ -61,12 +70,7 @@ int UniqueCandidateList::getSize()
 Candidate UniqueCandidateList::getMostVoted()
 {
 	//might have to change in the event of a tie
-	if (!isSorted)
-	{
-		isSorted = true;
-		std::sort(cList.begin(), cList.end(), [](Candidate& a, Candidate& b) {return a.getNumVotes() > b.getNumVotes(); });
-		//cList.sort();
-	}
+	sortByVote();
 
 	for (auto c : cList)
 	{

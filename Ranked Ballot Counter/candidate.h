@@ -32,6 +32,7 @@ public:
 	UniqueCandidateList() {};
 
 	void tryAddCandidate(std::string candidateName);
+	void sortByVote();
 
 	Candidate get(int index);
 	int getSize();

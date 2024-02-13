@@ -136,6 +136,7 @@
     <ClInclude Include="ballot.h" />
     <ClInclude Include="candidate.h" />
     <ClInclude Include="main.hpp" />
+    <ClInclude Include="rapidcsv.h" />
     <ClInclude Include="voter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
