@@ -28,6 +28,11 @@
 
 int main()
 {
-	std::cout << "Hello World!\n";
+	//figure out a local path that works
+	Ballot b{ "C:\\Users\\pixture\\source\\repos\\CS358\\Ranked Ballot Counter\\SmallListBallots.csv" };
+
+	std::cout << b.runFirstRound().getName();
+
+	return 0;
 }
 
