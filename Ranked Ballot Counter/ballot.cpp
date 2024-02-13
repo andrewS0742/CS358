@@ -38,4 +38,5 @@ Candidate Ballot::runFirstRound()
 	{
 		ucl.tryAddCandidate(voter.getFirstVote());
 	}
+	return ucl.getMostVoted();
 }

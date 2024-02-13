@@ -16,6 +16,11 @@ int Candidate::getNumVotes()
 	return numVotes;
 }
 
+bool Candidate::operator>(Candidate& other)
+{
+	return (this->numVotes > other.numVotes) ? true : false;
+}
+
 void Candidate::addVote()
 {
 	numVotes++;
@@ -23,16 +28,22 @@ void Candidate::addVote()
 
 void UniqueCandidateList::tryAddCandidate(std::string candidateName)
 {
-	for (auto c : cList)
+	isSorted = false;
+	if (cList.size() == 0) cList.push_back(Candidate(candidateName));
+	else
 	{
-		if (candidateName == c.getName())
+		bool match = false;
+		int matchIndex;
+		for (int i = 0; i < cList.size(); i++)
 		{
-			c.addVote();
+			if (candidateName == cList[i].getName())
+			{
+				matchIndex = i;
+				match = true;
+			}
 		}
-		else
-		{
-			cList.push_back(Candidate(candidateName));
-		}
+		if (match) cList[matchIndex].addVote();
+		else cList.push_back(Candidate(candidateName));
 	}
 }
 
@@ -45,4 +56,22 @@ Candidate UniqueCandidateList::get(int index)
 int UniqueCandidateList::getSize()
 {
 	return cList.size();
+}
+
+Candidate UniqueCandidateList::getMostVoted()
+{
+	//might have to change in the event of a tie
+	if (!isSorted)
+	{
+		isSorted = true;
+		std::sort(cList.begin(), cList.end(), [](Candidate& a, Candidate& b) {return a.getNumVotes() > b.getNumVotes(); });
+		//cList.sort();
+	}
+
+	for (auto c : cList)
+	{
+		std::cout << c.getNumVotes() << "-> " << c.getName() << std::endl;
+	}
+
+	return cList[0];
 }

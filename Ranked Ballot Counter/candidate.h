@@ -19,11 +19,14 @@ public:
 
 	std::string getName();
 	int getNumVotes();
+
+	bool operator>(Candidate& other);
 };
 
 class UniqueCandidateList
 {
 	std::vector<Candidate> cList;
+	bool isSorted = false;
 
 public:
 	UniqueCandidateList() {};
@@ -32,6 +35,7 @@ public:
 
 	Candidate get(int index);
 	int getSize();
+	Candidate getMostVoted();
 
 };
 
