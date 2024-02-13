@@ -29,9 +29,10 @@
 int main()
 {
 	//figure out a local path that works
-	Ballot b{ "C:\\Users\\pixture\\source\\repos\\CS358\\Ranked Ballot Counter\\SmallListBallots.csv" };
+	//Ballot b{ "C:\\Users\\pixture\\source\\repos\\CS358\\Ranked Ballot Counter\\SmallListBallots.csv" };
+	Ballot b{ "C:\\Users\\pixtu\\Source\\Repos\\andrewS0742\\CS358\\Ranked Ballot Counter\\SmallListBallots.csv" };
 
-	std::cout << b.runFirstRound().getName();
+	std::cout << b.runRound().getName();
 
 	return 0;
 }
