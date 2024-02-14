@@ -1,9 +1,13 @@
 #include "main.hpp"
 
+//
+// CANDIDATE
+//
 Candidate::Candidate(std::string name)
 {
+	//if candidate created it already has one vote
+	numVotes = 1;
 	this->name = name;
-	numVotes = 0;
 }
 
 std::string Candidate::getName()
@@ -16,16 +20,14 @@ int Candidate::getNumVotes()
 	return numVotes;
 }
 
-bool Candidate::operator>(Candidate& other)
-{
-	return (this->numVotes > other.numVotes) ? true : false;
-}
-
 void Candidate::addVote()
 {
 	numVotes++;
 }
 
+//
+// UNIQUE CANDIDATE LIST
+//
 void UniqueCandidateList::tryAddCandidate(std::string candidateName)
 {
 	isSorted = false;

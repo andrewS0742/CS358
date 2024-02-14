@@ -19,8 +19,6 @@ public:
 
 	std::string getName();
 	int getNumVotes();
-
-	bool operator>(Candidate& other);
 };
 
 class UniqueCandidateList

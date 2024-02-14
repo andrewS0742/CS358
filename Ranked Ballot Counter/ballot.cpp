@@ -1,5 +1,8 @@
 #include "main.hpp"
 
+//
+// ROUND DATA
+//
 void RoundData::processRound()
 {
 	std::vector<Candidate> winnerList = getMostVoted();
@@ -14,10 +17,7 @@ void RoundData::processRound()
 		{
 			roundResult = RoundResult::WINNER;
 		}
-		else
-		{
-			roundResult = RoundResult::NEWROUND;
-		}
+		else roundResult = RoundResult::NEWROUND;
 	}
 }
 
@@ -53,6 +53,9 @@ RoundResult RoundData::getRoundResult()
 	return roundResult;
 }
 
+//
+//	BALLOT
+//
 Ballot::Ballot(std::string ballotFilePath)
 {
 	loadBallotFromFile(ballotFilePath);
@@ -120,19 +123,4 @@ Candidate Ballot::runRound()
 	{
 		std::cout << "Error" << std::endl;
 	}
-
-	
-	//Candidate potentialWinner = ucl.getMostVoted();
-	//if (potentialWinner.getNumVotes() / (float)ucl.getSize() > 0.5f)
-	//{
-	//	return potentialWinner;
-	//}
-	//else
-	//{
-	//	//preprocess round
-	//	//run recursive until winner
-	//	return runRound();
-	//}
-	
-	//return ucl.getMostVoted();
 }

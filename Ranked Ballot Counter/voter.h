@@ -14,7 +14,6 @@ private:
 	std::string thirdVote;
 
 public:
-	Voter(std::string csvLine);
 	Voter (std::string firstVote, std::string secondVote, std::string thirdVote, std::string id);
 
 	std::string getId();
