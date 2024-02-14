@@ -60,29 +60,22 @@ Ballot::Ballot(std::string ballotFilePath)
 
 void Ballot::loadBallotFromFile(std::string ballotFilePath)
 {
-	std::ofstream of("test.csv");
-	of << "test";
-	of.close();
+	rapidcsv::Document doc(ballotFilePath);
 
-	std::ifstream f(ballotFilePath);
-	std::string line;
+	//column lists will correctly include empty strings for blank entries
+	std::vector<std::string> fvList = doc.GetColumn<std::string>("First Choice");
+	std::vector<std::string> svList = doc.GetColumn<std::string>("Second Choice");
+	std::vector<std::string> tvList = doc.GetColumn<std::string>("Third Choice");
+	std::vector<std::string> idList = doc.GetColumn<std::string>("VoterID");
 
-	if (f.good())
+	if (fvList.size() == svList.size() && svList.size() == tvList.size() && tvList.size() == idList.size())
 	{
-		//read and ignore first line
-		std::getline(f, line);
-		
-		while (std::getline(f, line))
+		for (int i = 0; i < fvList.size(); i++)
 		{
-			voterList.push_back(line);
+			voterList.push_back(Voter(fvList.at(i), svList.at(i), tvList.at(i), idList.at(i)));
 		}
-
-		std::cout << "Successfully read csv file" << std::endl;
 	}
-	else
-	{
-		std::cout << "Could not open file with path " << ballotFilePath << std::endl;
-	}
+	else std::cout << "ERROR" << std::endl;
 }
 
 Candidate Ballot::runRound()
