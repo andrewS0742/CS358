@@ -20,15 +20,20 @@
 		-> displays election results
 
 	considerations
-		need to plan how to read through csv file effectively
-		need to think of getting next vote for voter with blank vote
-		eliminating candidates prior to a new round depending on conditions
-		implement testing
+		
+		TODO: need to think of getting next vote for voter with blank vote
+		TODO: eliminating candidates prior to a new round depending on conditions
+		TODO: implement testing
+		TODO: gui interface
+
+		https://philippegroarke.com/posts/2018/c++_ui_solutions/
+		https://github.com/ocornut/imgui
+		https://github.com/Immediate-Mode-UI/Nuklear
 */
 
 int main()
 {
-	//figure out a local path that works
+	//TODO: figure out a local path that works
 	//Ballot b{ "C:\\Users\\pixture\\source\\repos\\CS358\\Ranked Ballot Counter\\SmallListBallots.csv" };
 	//Ballot b{ "C:\\Users\\pixtu\\Source\\Repos\\andrewS0742\\CS358\\Ranked Ballot Counter\\SmallListBallots.csv" };
 	Ballot b{ "C:\\Users\\pixtu\\Source\\Repos\\andrewS0742\\CS358\\Ranked Ballot Counter\\LargeListBallots.csv" };

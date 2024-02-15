@@ -5,13 +5,14 @@ class Voter
 	//list of three votes as strings
 	
 	//get candidate (index) to access candidate list after construction
-private:
+
 	std::string csvString;
 
-	std::string id;
+	//TODO: turn votes into list to simplify logic
 	std::string firstVote;
 	std::string secondVote;
 	std::string thirdVote;
+	std::string id;
 
 public:
 	Voter (std::string firstVote, std::string secondVote, std::string thirdVote, std::string id);

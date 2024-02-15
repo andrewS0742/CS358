@@ -71,7 +71,7 @@ int UniqueCandidateList::getSize()
 
 Candidate UniqueCandidateList::getMostVoted()
 {
-	//might have to change in the event of a tie
+	//TODO: might have to change in the event of a tie
 	sortByVote();
 
 	for (auto c : cList)
