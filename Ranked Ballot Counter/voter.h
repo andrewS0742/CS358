@@ -8,7 +8,7 @@ class Voter
 
 	std::string csvString;
 
-	//TODO: turn votes into list to simplify logic
+	//easier to keep votes as 3 vars
 	std::string firstVote;
 	std::string secondVote;
 	std::string thirdVote;

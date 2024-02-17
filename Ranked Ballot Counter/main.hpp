@@ -9,6 +9,8 @@
 
 //open source csv parsing library
 #include "rapidcsv.h"
+#include <nanogui/nanogui.h>
+namespace n = nanogui;
 
 #include "voter.h"
 #include "candidate.h"
