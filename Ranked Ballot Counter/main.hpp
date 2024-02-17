@@ -6,6 +6,7 @@
 #include <list>
 #include <fstream>
 #include <algorithm>
+#include <memory>
 
 //open source csv parsing library
 #include "rapidcsv.h"
