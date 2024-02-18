@@ -22,13 +22,15 @@ enum class RoundResult {WINNER, TIED, NEWROUND};
 //acts like an archive of a round, core of round processing is done by Ballot
 class RoundData
 {
-	int roundNumber;
-	RoundResult roundResult;
-	UniqueCandidateList ucl;
 
 	void processRound();
 
 public:
+
+	int roundNumber;
+	RoundResult roundResult;
+	UniqueCandidateList roundUCL;
+
 	RoundData(int roundNum, UniqueCandidateList roundUcl);
 
 	std::vector<Candidate> getMostVoted();
@@ -50,12 +52,15 @@ class Ballot
 	std::vector<RoundData> roundList;
 
 public:
+	std::string pathList;
 
-	Ballot(std::string ballotFilePath);
+	Ballot();
 
-	void loadBallotFromFile(std::string ballotFilePath);
 
+	void loadBallotFromFile(std::vector<std::string> ballotFilePaths);
 	Candidate runRound();
+
+	std::vector<RoundData> getResults();
 
 };
 

@@ -33,32 +33,54 @@
 
 int main()
 {
-	//TODO: figure out a local path that works
-	//Ballot b{ "C:\\Users\\pixture\\source\\repos\\CS358\\Ranked Ballot Counter\\SmallListBallots.csv" };
-	//Ballot b{ "C:\\Users\\pixtu\\Source\\Repos\\andrewS0742\\CS358\\Ranked Ballot Counter\\SmallListBallots.csv" };
+	Ballot b;
+	bool showResults = false;
 
 	n::init();
 	n::Screen* s = new n::Screen(n::Vector2i(500, 500), "TEST");
 	n::FormHelper* gui = new n::FormHelper(s);
 
-	//std::shared_ptr<n::Screen> s = std::make_shared<n::Screen>(n::Vector2i(500, 500), "TEST");
-	//std::shared_ptr<n::FormHelper> gui = std::make_shared<n::FormHelper>(s);
-
 	n::ref<n::Window> window = gui->add_window(n::Vector2i(0, 0), "Ballot Counter");
+	gui->add_group("File Selection");
+	gui->add_button("Select Files", [&]() 
+		{
+			b.loadBallotFromFile(n::file_dialog({ { "csv", "Comma Seperated Spreadsheet" } }, false, true)); 
+			b.runRound(); 
+			showResults = true; 
+			gui->refresh(); 
+		});
+	gui->add_variable("Selected Files", b.pathList, false);
+
+	n::ref<n::Window> resultWindow = gui->add_window(n::Vector2i(0, 0), "Election Results");
+	gui->add_group("Round Results");
+	gui->add_button("Recalculate Results", [&]()
+		{
+			b.runRound();
+			std::vector<RoundData> rr = b.getResults();
+
+			for (int i = 0; i < rr.size(); i++)
+			{
+				//cannot add lables at run time
+				gui->add_variable("Round Number", rr[i].roundNumber, false);
+			}
+
+			gui->refresh();
+		});
 	
+
 	s->set_visible(true);
 	s->perform_layout();
+
 	window->center();
+	resultWindow->set_visible(true);
+	resultWindow->center();
 	
 	n::mainloop();
 	
 	n::shutdown();
+
+	delete s;
+	delete gui;
 	return 0;
-
-	//Ballot b{ "C:\\Users\\pixtu\\Source\\Repos\\andrewS0742\\CS358\\Ranked Ballot Counter\\LargeListBallots.csv" };
-
-	//std::cout << b.runRound().getName();
-
-	//return 0;
 }
 

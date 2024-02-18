@@ -13,7 +13,7 @@ void RoundData::processRound()
 	else
 	{
 		Candidate potentialWinner = winnerList[0];
-		if (potentialWinner.getNumVotes() / (float)ucl.getSize() > 0.5f)
+		if (potentialWinner.getNumVotes() / (float)roundUCL.getSize() > 0.5f)
 		{
 			roundResult = RoundResult::WINNER;
 		}
@@ -22,9 +22,10 @@ void RoundData::processRound()
 }
 
 RoundData::RoundData(int roundNum, UniqueCandidateList roundUcl)
+	:roundNumber(roundNum), roundUCL(roundUcl)
 {
-	roundNumber = roundNum;
-	ucl = roundUcl;
+	//roundNumber = roundNum;
+	//ucl = roundUcl;
 
 	processRound();
 }
@@ -33,12 +34,12 @@ std::vector<Candidate> RoundData::getMostVoted()
 {
 	std::vector<Candidate> mostVotedList;
 
-	mostVotedList.push_back(ucl.get(0));
-	for (int i = 1; i < ucl.getSize(); i++)
+	mostVotedList.push_back(roundUCL.get(0));
+	for (int i = 1; i < roundUCL.getSize(); i++)
 	{
-		if (ucl.get(i).getNumVotes() == mostVotedList[0].getNumVotes())
+		if (roundUCL.get(i).getNumVotes() == mostVotedList[0].getNumVotes())
 		{
-			mostVotedList.push_back(ucl.get(i));
+			mostVotedList.push_back(roundUCL.get(i));
 		}
 		else
 		{
@@ -56,14 +57,25 @@ RoundResult RoundData::getRoundResult()
 //
 //	BALLOT
 //
-Ballot::Ballot(std::string ballotFilePath)
+Ballot::Ballot()
+	:pathList("No Files Selected" )
 {
-	loadBallotFromFile(ballotFilePath);
 }
 
-void Ballot::loadBallotFromFile(std::string ballotFilePath)
+void Ballot::loadBallotFromFile(std::vector<std::string> ballotFilePaths)
 {
-	rapidcsv::Document doc(ballotFilePath);
+	pathList = "";
+	for (const auto& path : ballotFilePaths)
+	{
+		pathList += (path + "\n");
+	}
+
+	//todo: merge multiple files into one ballot
+	//for (const auto& file : ballotFilePaths)
+	//{
+	//
+	//}
+	rapidcsv::Document doc(ballotFilePaths[0]);
 
 	//column lists will correctly include empty strings for blank entries
 	std::vector<std::string> fvList = doc.GetColumn<std::string>("First Choice");
@@ -98,6 +110,7 @@ Candidate Ballot::runRound()
 	
 	*/
 
+	std::cout << "Ran Round" << std::endl;
 
 	for (auto voter : voterList)
 	{
@@ -124,3 +137,13 @@ Candidate Ballot::runRound()
 		std::cout << "Error" << std::endl;
 	}
 }
+
+std::vector<RoundData> Ballot::getResults()
+{
+	return roundList;
+}
+
+//const std::string Ballot::getPathList()
+//{
+//	return pathList;
+//}
