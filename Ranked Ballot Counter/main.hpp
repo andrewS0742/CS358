@@ -16,3 +16,4 @@ namespace n = nanogui;
 #include "voter.h"
 #include "candidate.h"
 #include "ballot.h"
+#include "gui.h"
