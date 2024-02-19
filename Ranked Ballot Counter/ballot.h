@@ -19,49 +19,86 @@
 
 */
 
+/// <summary>
+/// The result of a round, ending with a winner, tie, or another round
+/// </summary>
 enum class RoundResult {WINNER, TIED, NEWROUND};
 
-//acts like an archive of a round, core of round processing is done by Ballot
+/// <summary>
+/// Stores information about the result of an election round
+/// </summary>
 class RoundData
 {
-
+	/// <summary>
+	/// Processes round information from a round candidate list. 
+	/// Is called in the constructor
+	/// </summary>
 	void processRound();
 
 public:
 
+	/// <summary>
+	/// ballot count round number
+	/// </summary>
 	int roundNumber;
+
+	/// <summary>
+	/// Result of the count round
+	/// </summary>
 	RoundResult roundResult;
+
+	/// <summary>
+	/// List of unique candidates that counts number of votes
+	/// </summary>
 	UniqueCandidateList roundUCL;
 
+	/// <summary>
+	/// Constructor for Round Data
+	/// </summary>
+	/// <param name="roundNum">Round Number</param>
+	/// <param name="roundUcl">List of unique candidates</param>
 	RoundData(int roundNum, UniqueCandidateList roundUcl);
 
+	/// <summary>
+	/// returns the most voted for candidate.
+	/// If there is a tie, it returns all tied candidates
+	/// </summary>
+	/// <returns>vector of candidates</returns>
 	std::vector<Candidate> getMostVoted();
+
+	/// <returns>Round result</returns>
 	RoundResult getRoundResult();
 	
 };
 
-
+/// <summary>
+/// A ballot of voters and their choices, loaded from a csv spreadsheet
+/// </summary>
 class Ballot
 {
-	//voter list
-	//candidate list
-	//way to keep track of rounds (recursive?)
-
-	//constructor takes file path and reads file
-
 	std::vector<Voter> voterList;
 	UniqueCandidateList ucl;
 	std::vector<RoundData> roundList;
 
 public:
-	std::string pathList;
+	/// <summary>
+	/// Joined list of paths of loaded csv files
+	/// </summary>
+	std::string pathList = "No files selected";
 
-	Ballot();
-
-
+	/// <summary>
+	/// Loads ballot from multiple formatted csv spreadsheet
+	/// </summary>
+	/// <param name="ballotFilePaths">vector of the full paths of csv files meaning to be loaded</param>
 	void loadBallotFromFile(std::vector<std::string> ballotFilePaths);
+
+	/// <summary>
+	/// Runs rounds and adds to roundList
+	/// </summary>
+	/// <returns>returns winning candidate</returns>
 	Candidate runRound();
 
+	/// <returns>returns vector of round data</returns>
 	std::vector<RoundData> getResults();
 
 };

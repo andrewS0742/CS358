@@ -46,6 +46,7 @@ void UniqueCandidateList::tryAddCandidate(std::string candidateName)
 				match = true;
 			}
 		}
+		//add if unique, otherwise add vote
 		if (match) cList[matchIndex].addVote();
 		else cList.push_back(Candidate(candidateName));
 	}
@@ -55,8 +56,9 @@ void UniqueCandidateList::sortByVote()
 {
 	if (!isSorted)
 	{
-		isSorted = true;
+		//sort by most voted for to least
 		std::sort(cList.begin(), cList.end(), [](Candidate& a, Candidate& b) {return a.getNumVotes() > b.getNumVotes(); });
+		isSorted = true;
 	}
 }
 

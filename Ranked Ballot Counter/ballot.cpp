@@ -25,27 +25,22 @@ void RoundData::processRound()
 RoundData::RoundData(int roundNum, UniqueCandidateList roundUcl)
 	:roundNumber(roundNum), roundUCL(roundUcl)
 {
-	//roundNumber = roundNum;
-	//ucl = roundUcl;
-
 	processRound();
 }
 
 std::vector<Candidate> RoundData::getMostVoted()
 {
+	roundUCL.sortByVote();
 	std::vector<Candidate> mostVotedList;
-
 	mostVotedList.push_back(roundUCL.get(0));
+
 	for (int i = 1; i < roundUCL.getSize(); i++)
 	{
 		if (roundUCL.get(i).getNumVotes() == mostVotedList[0].getNumVotes())
 		{
 			mostVotedList.push_back(roundUCL.get(i));
 		}
-		else
-		{
-			break;
-		}
+		else break;
 	}
 	return mostVotedList;
 }
@@ -58,13 +53,9 @@ RoundResult RoundData::getRoundResult()
 //
 //	BALLOT
 //
-Ballot::Ballot()
-	:pathList("No Files Selected" )
-{
-}
-
 void Ballot::loadBallotFromFile(std::vector<std::string> ballotFilePaths)
 {
+	//join paths into one string for display
 	pathList = "";
 	for (const auto& path : ballotFilePaths)
 	{
