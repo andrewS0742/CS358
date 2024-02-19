@@ -1,3 +1,9 @@
+/*
+	Andrew Schmidt
+	2-18-24
+	Ballot counting program for ranked ballots
+*/
+
 #pragma once
 #include <string>
 

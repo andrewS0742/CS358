@@ -1,3 +1,9 @@
+/*
+	Andrew Schmidt
+	2-18-24
+	Ballot counting program for ranked ballots
+*/
+
 #include "voter.h"
 
 Voter::Voter(std::string firstVote, std::string secondVote, std::string thirdVote, std::string id)

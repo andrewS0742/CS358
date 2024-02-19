@@ -1,40 +1,23 @@
-//#include "main.hpp"
+/*
+	Andrew Schmidt
+	2-18-24
+	Ballot counting program for ranked ballots
+*/
 
-#include "rapidcsv.h"
-#include <nanogui/nanogui.h>
 #include "ballot.h"
-//#include "candidate.h"
+
+//https://github.com/d99kris/rapidcsv
+#include "rapidcsv.h"
+
+//https://github.com/wjakob/nanogui
+#include <nanogui/nanogui.h>
+
 namespace n = nanogui;
 
 /*
-
-	Ranked Ballot Processing
-
-	classes
-		voter
-		-> contains list of voted for candidates as list, "blank" for blank entry
-		-> read from ballot csv
-
-		candidate
-		-> contains name of candidate, number of times voted
-
-		ballot
-		-> reads in csv
-		-> generates list of voters
-		-> generates candidates with appropriate number of times voted from voter list
-		-> goes through rounds to determine winner
-		-> displays election results
-
-	considerations
-		
-		TODO: need to think of getting next vote for voter with blank vote
-		TODO: eliminating candidates prior to a new round depending on conditions
-		TODO: implement testing
-		
-
-		https://philippegroarke.com/posts/2018/c++_ui_solutions/
-		https://github.com/ocornut/imgui
-		https://github.com/Immediate-Mode-UI/Nuklear
+	TODO: need to think of getting next vote for voter with blank vote
+	TODO: eliminating candidates prior to a new round depending on conditions
+	TODO: implement testing
 */
 
 int main()
