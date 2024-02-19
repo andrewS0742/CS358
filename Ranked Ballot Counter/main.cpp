@@ -30,7 +30,7 @@ namespace n = nanogui;
 		TODO: need to think of getting next vote for voter with blank vote
 		TODO: eliminating candidates prior to a new round depending on conditions
 		TODO: implement testing
-		TODO: add better documentation
+		
 
 		https://philippegroarke.com/posts/2018/c++_ui_solutions/
 		https://github.com/ocornut/imgui

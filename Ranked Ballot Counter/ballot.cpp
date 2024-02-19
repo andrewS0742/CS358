@@ -62,27 +62,26 @@ void Ballot::loadBallotFromFile(std::vector<std::string> ballotFilePaths)
 		pathList += (path + "\n");
 	}
 
-	//todo: merge multiple files into one ballot
-	//for (const auto& file : ballotFilePaths)
-	//{
-	//
-	//}
-	rapidcsv::Document doc(ballotFilePaths[0]);
-
-	//column lists will correctly include empty strings for blank entries
-	std::vector<std::string> fvList = doc.GetColumn<std::string>("First Choice");
-	std::vector<std::string> svList = doc.GetColumn<std::string>("Second Choice");
-	std::vector<std::string> tvList = doc.GetColumn<std::string>("Third Choice");
-	std::vector<std::string> idList = doc.GetColumn<std::string>("VoterID");
-
-	if (fvList.size() == svList.size() && svList.size() == tvList.size() && tvList.size() == idList.size())
+	//assumes voter IDs are unique across files
+	for (const auto& file : ballotFilePaths)
 	{
-		for (int i = 0; i < fvList.size(); i++)
+		rapidcsv::Document doc(file);
+
+		//column lists will correctly include empty strings for blank entries
+		std::vector<std::string> fvList = doc.GetColumn<std::string>("First Choice");
+		std::vector<std::string> svList = doc.GetColumn<std::string>("Second Choice");
+		std::vector<std::string> tvList = doc.GetColumn<std::string>("Third Choice");
+		std::vector<std::string> idList = doc.GetColumn<std::string>("VoterID");
+
+		if (fvList.size() == svList.size() && svList.size() == tvList.size() && tvList.size() == idList.size())
 		{
-			voterList.push_back(Voter(fvList.at(i), svList.at(i), tvList.at(i), idList.at(i)));
+			for (int i = 0; i < fvList.size(); i++)
+			{
+				voterList.push_back(Voter(fvList.at(i), svList.at(i), tvList.at(i), idList.at(i)));
+			}
 		}
+		else std::cout << "ERROR" << std::endl;
 	}
-	else std::cout << "ERROR" << std::endl;
 }
 
 Candidate Ballot::runRound()
