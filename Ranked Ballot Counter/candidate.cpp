@@ -1,4 +1,6 @@
-#include "main.hpp"
+#include <algorithm>
+#include <iostream>
+#include "candidate.h"
 
 //
 // CANDIDATE

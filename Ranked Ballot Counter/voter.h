@@ -1,4 +1,5 @@
-#include "main.hpp"
+#pragma once
+#include <string>
 
 class Voter
 {

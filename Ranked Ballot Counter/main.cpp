@@ -1,4 +1,10 @@
-#include "main.hpp"
+//#include "main.hpp"
+
+#include "rapidcsv.h"
+#include <nanogui/nanogui.h>
+#include "ballot.h"
+//#include "candidate.h"
+namespace n = nanogui;
 
 /*
 
@@ -34,7 +40,7 @@ int main()
 {
 	Ballot b;
 	bool showResults = false;
-	std::vector<ResultWindow> rdList;
+	//std::vector<ResultWindow> rdList;
 
 	n::init();
 	n::Screen* s = new n::Screen(n::Vector2i(500, 500), "TEST");
@@ -56,7 +62,7 @@ int main()
 	gui->add_group("File Selection");
 	gui->add_button("Select Files", [&]() 
 		{
-			rdList.clear();
+			//rdList.clear();
 			b.loadBallotFromFile(n::file_dialog({ { "csv", "Comma Seperated Spreadsheet" } }, false, true)); 
 			b.runRound(); 
 

@@ -1,4 +1,6 @@
-#include "main.hpp"
+#pragma once
+#include "candidate.h"
+#include "voter.h"
 
 /*
 

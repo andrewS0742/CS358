@@ -1,4 +1,4 @@
-#include "main.hpp"
+#include "voter.h"
 
 Voter::Voter(std::string firstVote, std::string secondVote, std::string thirdVote, std::string id)
 	:firstVote(firstVote), secondVote(secondVote), thirdVote(thirdVote), id(id)
