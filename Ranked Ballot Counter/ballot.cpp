@@ -1,4 +1,5 @@
-#include "main.hpp"
+#include "ballot.h"
+#include "rapidcsv.h"
 
 //
 // ROUND DATA
@@ -142,8 +143,3 @@ std::vector<RoundData> Ballot::getResults()
 {
 	return roundList;
 }
-
-//const std::string Ballot::getPathList()
-//{
-//	return pathList;
-//}
