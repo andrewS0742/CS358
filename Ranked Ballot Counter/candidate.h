@@ -67,6 +67,9 @@ public:
 	/// </summary>
 	void sortByVote();
 
+	/// <returns>returns the total number of votes in round</returns>
+	int getTotalVotes();
+
 	/// <summary>
 	/// Gets a candidate at the given index. Throws exception if out of bounds
 	/// </summary>

@@ -20,7 +20,7 @@ void RoundData::processRound()
 	else
 	{
 		Candidate potentialWinner = winnerList[0];
-		if (potentialWinner.getNumVotes() / (float)roundUCL.getSize() > 0.5f)
+		if (potentialWinner.getNumVotes() / (float)roundUCL.getTotalVotes() > 0.5f)
 		{
 			roundResult = RoundResult::WINNER;
 		}
@@ -90,7 +90,7 @@ void Ballot::loadBallotFromFile(std::vector<std::string> ballotFilePaths)
 	}
 }
 
-Candidate Ballot::runRound()
+void Ballot::runRound()
 {
 	/*
 	
@@ -107,8 +107,6 @@ Candidate Ballot::runRound()
 	
 	*/
 
-	std::cout << "Ran Round" << std::endl;
-
 	for (auto voter : voterList)
 	{
 		ucl.tryAddCandidate(voter.getFirstVote());
@@ -119,15 +117,16 @@ Candidate Ballot::runRound()
 
 	if (r.getRoundResult() == RoundResult::WINNER)
 	{
-		return r.getMostVoted()[0];
+		//return r.getMostVoted()[0];
+		return;
 	}
 	else if (r.getRoundResult() == RoundResult::TIED)
 	{
-		std::cout << "TIED" << std::endl;
+		//handle tie
 	}
 	else if (r.getRoundResult() == RoundResult::NEWROUND)
 	{
-		std::cout << "NEW ROUND" << std::endl;
+		//handle new round
 	}
 	else
 	{
@@ -137,6 +136,35 @@ Candidate Ballot::runRound()
 
 std::vector<RoundData> Ballot::getResults()
 {
+	//stand in since gui does not work properly
+	for (auto& round : roundList)
+	{
+		std::string result = "";
+		switch (round.roundResult)
+		{
+		case RoundResult::WINNER:
+			result = "Winner";
+			break;
+		case RoundResult::TIED:
+			result = "Tie";
+			break;
+		case RoundResult::NEWROUND:
+			result = "New Round";
+			break;
+		}
+
+		std::cout << "Round Number: " << round.roundNumber << std::endl;
+		std::cout << "Round Result: " << result << std::endl;
+		std::cout << "Most Voted For: " << round.roundUCL.get(0).getName() << " with " << round.roundUCL.get(0).getNumVotes() << " votes" << std::endl;
+		std::cout << "Candidate List: " << std::endl;
+		for (int i = 0; i < round.roundUCL.getSize(); i++)
+		{
+			std::cout << round.roundUCL.get(i).getName() << ", " << round.roundUCL.get(i).getNumVotes() << " votes" << std::endl;
+		}
+		std::cout << std::endl;
+	}
+
+
 	return roundList;
 }
 

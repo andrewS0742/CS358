@@ -103,8 +103,7 @@ public:
 	/// <summary>
 	/// Runs rounds and adds to roundList
 	/// </summary>
-	/// <returns>returns winning candidate</returns>
-	Candidate runRound();
+	void runRound();
 
 	/// <returns>returns vector of round data</returns>
 	std::vector<RoundData> getResults();

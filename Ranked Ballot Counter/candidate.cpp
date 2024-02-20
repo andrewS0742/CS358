@@ -68,6 +68,16 @@ void UniqueCandidateList::sortByVote()
 	}
 }
 
+int UniqueCandidateList::getTotalVotes()
+{
+	int totalVotes = 0;
+	for (auto& can : cList)
+	{
+		totalVotes += can.getNumVotes();
+	}
+	return totalVotes;
+}
+
 Candidate UniqueCandidateList::get(int index)
 {
 	//exception if out of bounds
