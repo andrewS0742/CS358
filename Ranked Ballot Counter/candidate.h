@@ -76,12 +76,5 @@ public:
 
 	/// <returns>Returns int size of candidate list</returns>
 	int getSize();
-
-	/// <summary>
-	/// Gets the most voted for candidate from candidate list. Does not tie break
-	/// </summary>
-	/// <returns>Candidate that was most voted for</returns>
-	Candidate getMostVoted();
-
 };
 

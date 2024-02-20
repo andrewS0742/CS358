@@ -29,9 +29,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="voter.h">
       <Filter>Header Files</Filter>
     </ClInclude>

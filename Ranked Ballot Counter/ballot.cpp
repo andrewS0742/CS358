@@ -139,3 +139,40 @@ std::vector<RoundData> Ballot::getResults()
 {
 	return roundList;
 }
+
+ResultWindow::ResultWindow(n::FormHelper* g)
+{
+	gui = g;
+	resultWindow = gui->add_window(n::Vector2i(0, 0), "Election Results");
+	gui->add_group("Round Results");
+	gui->add_variable("Round Number", this->roundNumber, false)->set_fixed_width(200);
+	gui->add_variable("Result", roundResult, false);//set_callback([&](std::string s) {std::cout << s << "something"; });
+	gui->add_variable("Most Voted", roundWinner, false);
+	gui->add_variable("Vote Count", numVotes, false);
+	resultWindow->set_visible(false);
+}
+
+void ResultWindow::loadData(RoundData rd)
+{
+	this->roundNumber = rd.roundNumber;
+
+	switch (rd.roundResult)
+	{
+	case RoundResult::WINNER:
+		roundResult = "Winner";
+		break;
+	case RoundResult::TIED:
+		roundResult = "Tie";
+		break;
+	case RoundResult::NEWROUND:
+		roundResult = "New Round";
+		break;
+	default:
+		break;
+	}
+
+	roundWinner = rd.getMostVoted()[0].getName();
+	numVotes = rd.getMostVoted()[0].getNumVotes();
+	resultWindow->set_visible(true);
+	gui->refresh();
+}

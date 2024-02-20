@@ -7,6 +7,8 @@
 #pragma once
 #include "candidate.h"
 #include "voter.h"
+#include <nanogui/nanogui.h>
+namespace n = nanogui;
 
 /*
 
@@ -109,3 +111,20 @@ public:
 
 };
 
+class ResultWindow
+{
+	int roundNumber = 0;
+	std::string roundResult = "";
+	std::string roundWinner = "";
+	int numVotes = 0;
+
+	n::Label* resultsBox;
+
+	n::ref<n::Window> resultWindow;
+	n::FormHelper* gui;
+
+public:
+	ResultWindow(n::FormHelper* g);
+
+	void loadData(RoundData rd);
+};

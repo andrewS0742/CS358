@@ -78,16 +78,3 @@ int UniqueCandidateList::getSize()
 {
 	return cList.size();
 }
-
-Candidate UniqueCandidateList::getMostVoted()
-{
-	//TODO: might have to change in the event of a tie
-	sortByVote();
-
-	for (auto c : cList)
-	{
-		std::cout << c.getNumVotes() << "-> " << c.getName() << std::endl;
-	}
-
-	return cList[0];
-}

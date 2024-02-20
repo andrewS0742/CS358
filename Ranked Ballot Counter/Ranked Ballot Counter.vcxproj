@@ -138,8 +138,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\Programming\Libraries\nanogui\build\src\python\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>nanobind-static.lib;Debug\nanogui.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\Programming\Libraries\nanogui\build\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>nanogui.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -151,7 +151,6 @@
   <ItemGroup>
     <ClInclude Include="ballot.h" />
     <ClInclude Include="candidate.h" />
-    <ClInclude Include="main.hpp" />
     <ClInclude Include="rapidcsv.h" />
     <ClInclude Include="voter.h" />
   </ItemGroup>
