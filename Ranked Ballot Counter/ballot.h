@@ -123,7 +123,15 @@ class ResultWindow
 	n::FormHelper* gui;
 
 public:
+	/// <summary>
+	/// Constructor for Result Window
+	/// </summary>
+	/// <param name="g">nanoGUI FormHelper* to create window with</param>
 	ResultWindow(n::FormHelper* g);
 
+	/// <summary>
+	/// Loads round data to display in window. Currently does not update properly
+	/// </summary>
+	/// <param name="rd">Round Data to load into window</param>
 	void loadData(RoundData rd);
 };
