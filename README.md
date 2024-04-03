@@ -17,7 +17,7 @@ A program to read ranked ballot files and determine a winner.
 * Clone this repo
 
 * Follow the compilation instructions in the Nanogui README
-* Compile BLAH
+* Compile nanogui lib and dll files (build nanogui project in Visual Studio)
 
 #### Updating VS Project
 * Under Ranked Ballot Counter Project > Properties > C++ > General > Additional Include Directories, add your nanogui/include folder
@@ -26,5 +26,5 @@ A program to read ranked ballot files and determine a winner.
 
 ### Executing program
 
-* Compile Ranked Ballot Counter through VS
+* Compile and run Ranked Ballot Counter through VS
 * Copy nanogui.dll into CS358/x64/(Debug or Release)/ if needed
